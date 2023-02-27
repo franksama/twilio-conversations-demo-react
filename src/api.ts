@@ -35,6 +35,19 @@ export async function addConversation(
     try {
       const conversation = await client.createConversation({
         friendlyName: name,
+        attributes: {
+          czenConversationId: "czenConversationId",
+          participantUUIDs: [
+            {
+              id: "uuid1",
+              type: "SEEKER",
+            },
+            {
+              id: "uuid2",
+              type: "CAREGIVER",
+            },
+          ],
+        },
       });
       await conversation.join();
 
